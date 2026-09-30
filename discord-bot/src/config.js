@@ -1,13 +1,30 @@
-// Edit prices and perks here. The /setup-info command posts them in a channel.
+// ===== Edit this file to change what /setup-info posts =====
 module.exports = {
+  brandName: process.env.BRAND_NAME || 'YourName', // shown in the title: "YourName Pricing"
   siteUrl: process.env.SITE_URL || 'https://your-site.com',
+
+  // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
+  // Leave empty to post without a banner.
+  bannerUrl: process.env.BANNER_URL || '',
+
+  // Optional: ID of your support channel, adds "Questions? Ask in #channel" to the footer.
+  supportChannelId: process.env.SUPPORT_CHANNEL_ID || '',
+
+  // Set to a color like 0xc1121f to show a colored bar on the left of the message.
+  accentColor: null,
+
+  // Still used by giveaways and /stats
   brandColor: 0xc1121f,
+
+  tagline:
+    'Every tier includes everything from the tier below. Purchases are made only on our website and your role is given automatically.',
+
+  // Emojis can be normal (💎) or custom server emojis like <:name:123456789012345678>
   plans: [
     {
       name: 'Plus',
       emoji: '🔹',
-      color: 0x8fd3ff,
-      price: 'X €/month',
+      price: '3.99€',
       platform: [
         'Plus badge on your profile',
         'Hide the watermark',
@@ -19,8 +36,7 @@ module.exports = {
     {
       name: 'Pro',
       emoji: '🔷',
-      color: 0x3fa7ff,
-      price: 'Y €/month',
+      price: '6.99€',
       platform: [
         'Everything in Plus',
         'Premium domains of your choice',
@@ -33,8 +49,7 @@ module.exports = {
     {
       name: 'Ultra',
       emoji: '🔵',
-      color: 0x1f6feb,
-      price: 'Z €/month',
+      price: '9.99€',
       platform: [
         'Everything in Pro',
         'All available domains',
@@ -46,4 +61,10 @@ module.exports = {
       discord: ['Ultra role with custom name and color', 'Private channel with the team', 'Priority support'],
     },
   ],
+
+  // Optional "Extras" section (leave the list empty to hide it). Example:
+  // { emoji: '🏷️', name: 'Extra alias', price: 'X € one time', description: 'A second name, like yoursite.com/nickname' }
+  extras: [],
+
+  footer: 'Buy only on our website · Staff will never ask you to pay in DMs',
 };
