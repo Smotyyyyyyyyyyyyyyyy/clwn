@@ -1,0 +1,16 @@
+{
+  "name": "community-bot",
+  "version": "1.0.0",
+  "description": "Discord bot: VIP roles via website webhook, moderation, giveaways, info embed",
+  "main": "src/index.js",
+  "scripts": {
+    "deploy": "node src/deploy-commands.js",
+    "start": "node src/index.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "discord.js": "^14.16.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
