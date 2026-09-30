@@ -8,7 +8,7 @@ module.exports = {
   bannerUrl: process.env.BANNER_URL || '',
 
   // Optional: ID of your support channel, adds "Questions? Ask in #channel" to the footer.
-  supportChannelId: process.env.SUPPORT_CHANNEL_ID || '',
+  supportChannelId: process.env.SUPPORT_CHANNEL_ID || '1554818454534619136',
 
   // Set to a color like 0xc1121f to show a colored bar on the left of the message.
   accentColor: null,
