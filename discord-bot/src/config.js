@@ -1,7 +1,7 @@
 // ===== Edit this file to change what /setup-info posts =====
 module.exports = {
-  brandName: process.env.BRAND_NAME || 'YourName', // shown in the title: "YourName Pricing"
-  siteUrl: process.env.SITE_URL || 'https://your-site.com',
+  brandName: process.env.BRAND_NAME || 'Clwn.wtf', // shown in the title: "YourName Pricing"
+  siteUrl: process.env.SITE_URL || 'https://clwn.wtf',
 
   // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
   // Leave empty to post without a banner.
@@ -23,7 +23,7 @@ module.exports = {
   plans: [
     {
       name: 'Plus',
-      emoji: '🔹',
+      emoji: '',
       price: '3.99€',
       platform: [
         'Plus badge on your profile',
@@ -35,7 +35,7 @@ module.exports = {
     },
     {
       name: 'Pro',
-      emoji: '🔷',
+      emoji: '',
       price: '6.99€',
       platform: [
         'Everything in Plus',
@@ -48,7 +48,7 @@ module.exports = {
     },
     {
       name: 'Ultra',
-      emoji: '🔵',
+      emoji: '',
       price: '9.99€',
       platform: [
         'Everything in Pro',
