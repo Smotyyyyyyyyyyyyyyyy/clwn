@@ -4,6 +4,7 @@ const { loadCommands } = require('./loadCommands');
 const { handleAutomod } = require('./automod');
 const { handleGiveawayButton, restoreGiveaways } = require('./giveaways');
 const { startApi } = require('./api');
+const tickets = require('./tickets');
 const { registerCommands } = require('./deploy-commands');
 
 if (!process.env.DISCORD_TOKEN) {
@@ -38,8 +39,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
     if (interaction.isChatInputCommand()) {
       const cmd = client.commands.get(interaction.commandName);
       if (cmd) await cmd.execute(interaction);
-    } else if (interaction.isButton() && interaction.customId === 'giveaway_enter') {
-      await handleGiveawayButton(interaction);
+    } else if (interaction.isButton()) {
+      if (interaction.customId === 'giveaway_enter') await handleGiveawayButton(interaction);
+      else if (interaction.customId.startsWith('ticket_')) await tickets.handleButton(interaction);
+    } else if (interaction.isModalSubmit() && interaction.customId.startsWith('ticket_modal:')) {
+      await tickets.handleModal(interaction);
     }
   } catch (err) {
     console.error(err);
