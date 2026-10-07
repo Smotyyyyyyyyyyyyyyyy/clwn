@@ -1,6 +1,6 @@
 // ===== Edit this file to change what /setup-info posts =====
 module.exports = {
-  brandName: process.env.BRAND_NAME || 'Clwn.wtf', // shown in the title: "YourName Pricing"
+  brandName: process.env.BRAND_NAME || 'Information', // shown in the title: "YourName Pricing"
   siteUrl: process.env.SITE_URL || 'https://clwn.wtf',
 
   // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
@@ -67,4 +67,47 @@ module.exports = {
   extras: [],
 
   footer: 'Buy only on our website · Staff will never ask you to pay in DMs',
+
+  // ===== Ticket system (/setup-tickets) =====
+  tickets: {
+    // Role that gets pinged and can claim/close tickets (right click role > Copy Role ID)
+    staffRoleId: process.env.STAFF_ROLE_ID || '',
+    // Optional channel where a transcript (.txt) is posted when a ticket is closed
+    logChannelId: process.env.TICKET_LOG_CHANNEL_ID || '',
+    panelText: 'Need help? Pick a category below and a private ticket will be opened just for you.',
+    // Max 5 categories. Each one becomes a button on the panel and a form (max 5 fields, label max 45 chars).
+    categories: [
+      {
+        key: 'purchases',
+        emoji: '🛍️',
+        name: 'Purchases',
+        description: 'Payments, refunds, gifts or giveaways',
+        fields: [
+          { id: 'username', label: 'Your username on the site', style: 'short', placeholder: 'e.g. john' },
+          { id: 'order', label: 'Order ID or receipt email', style: 'short', placeholder: 'From your receipt' },
+          { id: 'issue', label: 'What happened?', style: 'paragraph', placeholder: 'Tell us what went wrong' },
+        ],
+      },
+      {
+        key: 'support',
+        emoji: '🛠️',
+        name: 'Support',
+        description: 'Help with your profile, domains or settings',
+        fields: [
+          { id: 'username', label: 'Your username on the site', style: 'short', required: false },
+          { id: 'issue', label: 'How can we help?', style: 'paragraph' },
+        ],
+      },
+      {
+        key: 'bug',
+        emoji: '🐛',
+        name: 'Bug report',
+        description: 'Something is broken on the site',
+        fields: [
+          { id: 'issue', label: 'What happened?', style: 'paragraph' },
+          { id: 'steps', label: 'How can we reproduce it?', style: 'paragraph', required: false },
+        ],
+      },
+    ],
+  },
 };
