@@ -58,7 +58,7 @@ function buildPricingContainer() {
 
   container.addActionRowComponents(
     new ActionRowBuilder().addComponents(
-      new ButtonBuilder().setLabel('Go to site').setEmoji('🌐').setStyle(ButtonStyle.Link).setURL(config.siteUrl)
+      new ButtonBuilder().setLabel('Go to site').setEmoji('<:purchase_clwn:1558564715091722241>').setStyle(ButtonStyle.Link).setURL(config.siteUrl)
     )
   );
 
@@ -78,7 +78,7 @@ module.exports = {
       components: [buildPricingContainer()],
       flags: MessageFlags.IsComponentsV2,
     });
-    return interaction.reply({ content: 'Posted ✅', flags: MessageFlags.Ephemeral });
+    return interaction.reply({ content: 'Posted', flags: MessageFlags.Ephemeral });
   },
 
   buildPricingContainer, // exported for testing
