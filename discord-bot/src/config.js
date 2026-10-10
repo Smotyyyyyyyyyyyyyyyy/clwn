@@ -71,15 +71,15 @@ module.exports = {
   // ===== Ticket system (/setup-tickets) =====
   tickets: {
     // Role that gets pinged and can claim/close tickets (right click role > Copy Role ID)
-    staffRoleId: process.env.STAFF_ROLE_ID || '',
+    staffRoleId: process.env.STAFF_ROLE_ID || '1558569041373700126',
     // Optional channel where a transcript (.txt) is posted when a ticket is closed
-    logChannelId: process.env.TICKET_LOG_CHANNEL_ID || '',
+    logChannelId: process.env.TICKET_LOG_CHANNEL_ID || '1558568949761704007',
     panelText: 'Need help? Pick a category below and a private ticket will be opened just for you.',
     // Max 5 categories. Each one becomes a button on the panel and a form (max 5 fields, label max 45 chars).
     categories: [
       {
         key: 'purchases',
-        emoji: '🛍️',
+        emoji: '<:purchase_clwn:1558564715091722241>',
         name: 'Purchases',
         description: 'Payments, refunds, gifts or giveaways',
         fields: [
@@ -90,9 +90,9 @@ module.exports = {
       },
       {
         key: 'support',
-        emoji: '🛠️',
+        emoji: '<:support_clwn:1558568751656607904>',
         name: 'Support',
-        description: 'Help with your profile, domains or settings',
+        description: 'Help with your profile, settings or staff aplications',
         fields: [
           { id: 'username', label: 'Your username on the site', style: 'short', required: false },
           { id: 'issue', label: 'How can we help?', style: 'paragraph' },
@@ -100,7 +100,7 @@ module.exports = {
       },
       {
         key: 'bug',
-        emoji: '🐛',
+        emoji: '<:bug_clwn:1558568167209566298>',
         name: 'Bug report',
         description: 'Something is broken on the site',
         fields: [
