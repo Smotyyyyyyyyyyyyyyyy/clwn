@@ -28,7 +28,7 @@ const stats = {
     const g = interaction.guild;
     const embed = new EmbedBuilder()
       .setColor(config.brandColor)
-      .setTitle(`📊 ${g.name}`)
+      .setTitle(` ${g.name}`)
       .addFields(
         { name: 'Members', value: String(g.memberCount), inline: true },
         { name: 'Boosts', value: String(g.premiumSubscriptionCount || 0), inline: true },
@@ -41,7 +41,7 @@ const stats = {
 const ping = {
   data: new SlashCommandBuilder().setName('ping').setDescription('Check if the bot is alive'),
   async execute(interaction) {
-    return interaction.reply(`🏓 Pong! ${Math.round(interaction.client.ws.ping)} ms`);
+    return interaction.reply(` Pong! ${Math.round(interaction.client.ws.ping)} ms`);
   },
 };
 
