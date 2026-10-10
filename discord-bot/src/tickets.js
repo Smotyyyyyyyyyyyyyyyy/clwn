@@ -220,7 +220,7 @@ async function handleModal(interaction) {
   } catch (err) {
     console.error('Ticket creation failed:', err);
     return interaction.editReply(
-      "I couldn't create the ticket. An admin needs to give my role the permissions: Create Private Threads, Send Messages in Threads and Manage Threads."
+      `I couldn't create the ticket.\n-# Error: ${String(err.message).slice(0, 300)}`
     );
   }
 }
