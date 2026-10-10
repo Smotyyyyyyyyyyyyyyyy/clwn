@@ -23,7 +23,7 @@ module.exports = {
   plans: [
     {
       name: 'Plus',
-      emoji: '',
+      emoji: '<:plus_clwn:1558578058296955051>',
       price: '3.99€',
       platform: [
         'Plus badge on your profile',
@@ -31,11 +31,11 @@ module.exports = {
         'More links and uploads',
         'Premium effects and fonts',
       ],
-      discord: ['Plus role', 'Access to #vip-chat'],
+      discord: ['Acces to our assests'],
     },
     {
       name: 'Pro',
-      emoji: '',
+      emoji: '<:pro_clwn:1558580636107677696>',
       price: '6.99€',
       platform: [
         'Everything in Plus',
@@ -44,11 +44,11 @@ module.exports = {
         'Detailed analytics',
         'Animated / video background',
       ],
-      discord: ['Pro role', '#pro-lounge and #early-access', 'VIP giveaways and polls'],
+      discord: ['Acces to our assests'],
     },
     {
       name: 'Ultra',
-      emoji: '<:Ultra_clwn:1558578058296955051>',
+      emoji: '<:ultra_clwn:1558580511952085113>',
       price: '9.99€',
       platform: [
         'Everything in Pro',
@@ -58,7 +58,7 @@ module.exports = {
         'Featured profile on the site',
         'Beta access to new features',
       ],
-      discord: ['Ultra role with custom name and color', 'Private channel with the team', 'Priority support'],
+      discord: ['Acces to our assests'],
     },
   ],
 
