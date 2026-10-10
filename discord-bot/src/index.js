@@ -6,6 +6,7 @@ const { handleGiveawayButton, restoreGiveaways } = require('./giveaways');
 const { startApi } = require('./api');
 const tickets = require('./tickets');
 const { registerCommands } = require('./deploy-commands');
+const { syncMessages } = require('./sync');
 
 if (!process.env.DISCORD_TOKEN) {
   console.error('Missing DISCORD_TOKEN in .env');
