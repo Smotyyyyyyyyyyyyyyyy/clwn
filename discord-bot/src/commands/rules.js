@@ -16,14 +16,14 @@ const config = require('../config');
 
 // ===== Edit your rules here. Emojis can be normal or custom: <:name:123456789012345678> =====
 const RULES = [
-  { emoji: '🤝', title: 'Be respectful', text: 'Treat everyone with respect. No harassment, hate speech, discrimination or threats.' },
-  { emoji: '🚫', title: 'No illegal or NSFW content', text: 'Nothing illegal, sexual, graphic or shocking, in chat or on profiles. Zero tolerance for anything involving minors.' },
-  { emoji: '📢', title: 'No spam or advertising', text: 'No spam, mass pings, invite links or promoting other services, including in DMs.' },
-  { emoji: '🎭', title: 'No scams or impersonation', text: 'Do not pretend to be staff or the platform. Staff will never ask you to pay in DMs.' },
-  { emoji: '🔒', title: 'Protect privacy', text: "Do not share other people's personal information (doxxing) or leak private conversations." },
-  { emoji: '🔗', title: 'Keep profiles clean', text: 'No phishing, malware or scam links on your profile. Abusing the platform can get your profile removed.' },
-  { emoji: '💬', title: 'Use channels properly', text: 'Keep topics in the right channel and open a ticket for help instead of pinging staff.' },
-  { emoji: '⚖️', title: 'Follow the Discord rules', text: "You must follow Discord's Terms of Service and Community Guidelines (13+ only)." },
+  { emoji: '', title: 'Be respectful', text: 'Treat everyone with respect. No harassment, hate speech, discrimination or threats.' },
+  { emoji: '', title: 'No illegal or NSFW content', text: 'Nothing illegal, sexual, graphic or shocking, in chat or on profiles. Zero tolerance for anything involving minors.' },
+  { emoji: '', title: 'No spam or advertising', text: 'No spam, mass pings, invite links or promoting other services, including in DMs.' },
+  { emoji: '', title: 'No scams or impersonation', text: 'Do not pretend to be staff or the platform. Staff will never ask you to pay in DMs.' },
+  { emoji: '', title: 'Protect privacy', text: "Do not share other people's personal information (doxxing) or leak private conversations." },
+  { emoji: '', title: 'Keep profiles clean', text: 'No phishing, malware or scam links on your profile. Abusing the platform can get your profile removed.' },
+  { emoji: '', title: 'Use channels properly', text: 'Keep topics in the right channel and open a ticket for help instead of pinging staff.' },
+  { emoji: '', title: 'Follow the Discord rules', text: "You must follow Discord's Terms of Service and Community Guidelines (13+ only)." },
 ];
 
 const TAGLINE = 'By staying in this server you agree to follow the rules below. Staff decisions are final.';
