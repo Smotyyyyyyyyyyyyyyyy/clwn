@@ -48,7 +48,7 @@ module.exports = {
     },
     {
       name: 'Ultra',
-      emoji: '',
+      emoji: '<:Ultra_clwn:1558578058296955051>',
       price: '9.99€',
       platform: [
         'Everything in Pro',
