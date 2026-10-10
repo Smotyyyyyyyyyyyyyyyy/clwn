@@ -27,6 +27,7 @@ for (const cmd of loadCommands()) client.commands.set(cmd.data.name, cmd);
 client.once(Events.ClientReady, (c) => {
   console.log(`Logged in as ${c.user.tag}`);
   registerCommands().catch((err) => console.error('Command registration failed:', err.message));
+  syncMessages(client).catch(console.error);
   restoreGiveaways(client);
   startApi(client);
 });
