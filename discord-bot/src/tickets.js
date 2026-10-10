@@ -66,7 +66,7 @@ function isStaff(member) {
 // ---------- the panel (posted by /setup-tickets) ----------
 function buildPanel() {
   const c = new ContainerBuilder();
-  c.addTextDisplayComponents(text(`## 🎫 ${config.brandName} Support\n${config.tickets.panelText}`));
+  c.addTextDisplayComponents(text(`##  ${config.brandName} Support\n${config.tickets.panelText}`));
   c.addSeparatorComponents(divider());
   c.addTextDisplayComponents(
     text(config.tickets.categories.map((cat) => `${cat.emoji} **${cat.name}**\n${small([cat.description])}`).join('\n\n'))
@@ -89,7 +89,7 @@ function buildPanel() {
 
 // ---------- the message inside every ticket thread ----------
 function buildTicketContainer(t) {
-  const cat = categoryOf(t.category) || { emoji: '🎫', name: t.category };
+  const cat = categoryOf(t.category) || { emoji: '<:ticket_clwn:1558564782607568907>', name: t.category };
   const closed = t.status === 'closed';
   const c = new ContainerBuilder();
 
@@ -112,13 +112,13 @@ function buildTicketContainer(t) {
       new ButtonBuilder()
         .setCustomId('ticket_claim')
         .setLabel(t.claimedBy ? 'Claimed' : 'Claim')
-        .setEmoji('✅')
+        .setEmoji('')
         .setStyle(ButtonStyle.Secondary)
         .setDisabled(closed || Boolean(t.claimedBy)),
       new ButtonBuilder()
         .setCustomId('ticket_close')
         .setLabel('Close ticket')
-        .setEmoji('🔒')
+        .setEmoji('')
         .setStyle(ButtonStyle.Danger)
         .setDisabled(closed)
     )
@@ -216,7 +216,7 @@ async function handleModal(interaction) {
     data.tickets[thread.id] = ticket;
     save(data);
 
-    return interaction.editReply(`✅ Your ticket was created: ${thread}`);
+    return interaction.editReply(`Your ticket was created: ${thread}`);
   } catch (err) {
     console.error('Ticket creation failed:', err);
     return interaction.editReply(
@@ -244,7 +244,7 @@ async function claim(interaction) {
   await interaction.deferUpdate();
   await interaction.message.edit({ components: [buildTicketContainer(t)], flags: V2 });
   await interaction.channel
-    .send({ content: `✅ ${interaction.user} claimed this ticket.`, allowedMentions: { parse: [] } })
+    .send({ content: ` ${interaction.user} claimed this ticket.`, allowedMentions: { parse: [] } })
     .catch(() => {});
 }
 
@@ -274,7 +274,7 @@ async function sendTranscript(client, thread, t) {
   ].join('\n');
 
   await log.send({
-    content: `📁 Ticket **${fmt(t.number)}** (${t.category}) closed by <@${t.closedBy}> · opened by <@${t.userId}>`,
+    content: `<:ticket_clwn:1558564782607568907> Ticket **${fmt(t.number)}** (${t.category}) closed by <@${t.closedBy}> · opened by <@${t.userId}>`,
     files: [new AttachmentBuilder(Buffer.from(body, 'utf8'), { name: `ticket-${pad(t.number)}.txt` })],
     allowedMentions: { parse: [] },
   });
@@ -298,7 +298,7 @@ async function close(interaction) {
   await interaction.deferUpdate();
   await interaction.message.edit({ components: [buildTicketContainer(t)], flags: V2 }).catch(() => {});
   await interaction.channel
-    .send({ content: `🔒 Ticket closed by ${interaction.user}. Thanks for contacting us!`, allowedMentions: { parse: [] } })
+    .send({ content: ` Ticket closed by ${interaction.user}. Thanks for contacting us!`, allowedMentions: { parse: [] } })
     .catch(() => {});
   await sendTranscript(interaction.client, interaction.channel, t).catch(console.error);
 
