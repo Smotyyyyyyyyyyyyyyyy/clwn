@@ -14,6 +14,6 @@ module.exports = {
       components: [buildPanel()],
       flags: MessageFlags.IsComponentsV2,
     });
-    return interaction.reply({ content: 'Ticket panel posted ✅', flags: MessageFlags.Ephemeral });
+    return interaction.reply({ content: 'Ticket panel posted', flags: MessageFlags.Ephemeral });
   },
 };
