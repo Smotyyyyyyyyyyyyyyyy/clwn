@@ -18,7 +18,7 @@ const ban = {
       return interaction.reply({ content: "I can't ban this user (their role is higher than mine).", flags: ephemeral });
     }
     await interaction.guild.members.ban(user, { reason: `${interaction.user.tag}: ${reason}` });
-    return interaction.reply(`🔨 **${user.tag}** was banned. Reason: ${reason}`);
+    return interaction.reply(` **${user.tag}** was banned. Reason: ${reason}`);
   },
 };
 
@@ -39,7 +39,7 @@ const kick = {
       return interaction.reply({ content: "I can't kick this user (their role is higher than mine).", flags: ephemeral });
     }
     await member.kick(`${interaction.user.tag}: ${reason}`);
-    return interaction.reply(`👢 **${user.tag}** was kicked. Reason: ${reason}`);
+    return interaction.reply(` **${user.tag}** was kicked. Reason: ${reason}`);
   },
 };
 
@@ -64,7 +64,7 @@ const timeout = {
       return interaction.reply({ content: "I can't timeout this user (their role is higher than mine).", flags: ephemeral });
     }
     await member.timeout(minutes * 60 * 1000, `${interaction.user.tag}: ${reason}`);
-    return interaction.reply(`🔇 **${user.tag}** was muted for ${minutes} min. Reason: ${reason}`);
+    return interaction.reply(` **${user.tag}** was muted for ${minutes} min. Reason: ${reason}`);
   },
 };
 
@@ -80,7 +80,7 @@ const untimeout = {
     const member = await interaction.guild.members.fetch(user.id).catch(() => null);
     if (!member) return interaction.reply({ content: 'That user is not in the server.', flags: ephemeral });
     await member.timeout(null, `Unmuted by ${interaction.user.tag}`);
-    return interaction.reply(`🔊 **${user.tag}** was unmuted.`);
+    return interaction.reply(` **${user.tag}** was unmuted.`);
   },
 };
 
@@ -96,7 +96,7 @@ const clear = {
   async execute(interaction) {
     const amount = interaction.options.getInteger('amount');
     const deleted = await interaction.channel.bulkDelete(amount, true); // skips messages older than 14 days
-    return interaction.reply({ content: `🧹 Deleted ${deleted.size} messages.`, flags: ephemeral });
+    return interaction.reply({ content: ` Deleted ${deleted.size} messages.`, flags: ephemeral });
   },
 };
 
