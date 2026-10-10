@@ -243,7 +243,7 @@ async function enter(interaction) {
   }
   const n = g.entries.length;
   return interaction.reply({
-    content: `###  ${title}\n-# ${n} ${plural(n, 'entry', 'entries')} · you can leave any time before it ends`,
+    content: `### ${title}\n-# ${n} ${plural(n, 'entry', 'entries')} · you can leave any time before it ends`,
     components: [leaveRow(messageId)],
     flags: EPHEMERAL,
   });
