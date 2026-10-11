@@ -1,7 +1,7 @@
 // ===== Edit this file to change what /setup-info posts =====
 module.exports = {
   brandName: process.env.BRAND_NAME || 'Information', // shown in the title: "YourName Pricing"
-  siteUrl: process.env.SITE_URL || 'https://clwn.wtf',
+  siteUrl: process.env.SITE_URL || 'https://site-production-beed.up.railway.app',
 
   // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
   // Leave empty to post without a banner.
