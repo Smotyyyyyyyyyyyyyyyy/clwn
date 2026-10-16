@@ -13,8 +13,8 @@ function cleanUrl(name) {
 }
 
 module.exports = {
-  brandName: process.env.BRAND_NAME || 'Information', // shown in the title: "clwn.wtf Pricing"
-  siteUrl: cleanUrl('SITE_URL') || 'https://clwn.wtf',
+  brandName: 'clwn.wtf', // shown in the titles: "clwn.wtf Pricing", "clwn.wtf Rules", "clwn.wtf Support"
+  siteUrl: 'https://clwn.wtf', // fixed on purpose, the SITE_URL variable on the bot is not used anymore
 
   // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
   // Leave empty to post without a banner.
@@ -46,7 +46,7 @@ module.exports = {
         'Detailed profile analytics',
         'Up to 3 custom badges',
       ],
-      discord: ['Plus role', 'Priority support'],
+      discord: ['Premium role', 'Priority support'],
     },
     {
       name: 'Verified Badge',
@@ -106,7 +106,7 @@ module.exports = {
         key: 'support',
         emoji: '<:support_clwn:1558568751656607904>',
         name: 'Support',
-        description: 'Help with your profile and account or staff aplications',
+        description: 'Help with your profile and account or staff applications',
         fields: [
           { id: 'username', label: 'Your username on the site', style: 'short', required: false },
           { id: 'issue', label: 'How can we help?', style: 'paragraph' },
