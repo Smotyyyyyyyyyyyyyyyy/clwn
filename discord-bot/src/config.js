@@ -1,7 +1,7 @@
 // ===== Edit this file to change what /setup-info posts =====
 module.exports = {
   brandName: process.env.BRAND_NAME || 'Information', // shown in the title: "YourName Pricing"
-  siteUrl: process.env.SITE_URL || 'https://site-production-beed.up.railway.app',
+  siteUrl: process.env.SITE_URL || 'clwn.wtf',
 
   // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
   // Leave empty to post without a banner.
@@ -17,48 +17,49 @@ module.exports = {
   brandColor: 0xc1121f,
 
   tagline:
-    'Every tier includes everything from the tier below. Purchases are made only on our website and your role is given automatically.',
+    'Pick what you need. Purchases are made only on our website and your Discord role is given automatically.',
 
   // Emojis can be normal (💎) or custom server emojis like <:name:123456789012345678>
   plans: [
     {
-      name: 'Plus',
-      emoji: '<:plus_clwn:1558578058296955051>',
-      price: '3.99€',
+      name: 'Premium',
+      emoji: '<:premium_clwn:1558580511952085113>',
+      price: '$4.99',
       platform: [
-        'Plus badge on your profile',
-        'Hide the watermark',
-        'More links and uploads',
-        'Premium effects and fonts',
+        'Everything in Free',
+        'Animated backgrounds, premium fonts and cursor effects',
+        'Your own domain on your profile',
+        'Referral link to invite friends',
+        'Detailed profile analytics',
+        'Up to 3 custom badges',
       ],
-      discord: ['Acces to our assests'],
+      discord: ['Plus role', 'Priority support'],
     },
     {
-      name: 'Pro',
-      emoji: '<:pro_clwn:1558580636107677696>',
-      price: '6.99€',
-      platform: [
-        'Everything in Plus',
-        'Premium domains of your choice',
-        'Extra alias',
-        'Detailed analytics',
-        'Animated / video background',
-      ],
-      discord: ['Acces to our assests'],
+      name: 'Verified Badge',
+      emoji: '<:verified_clwn:1558578058296955051>',
+      price: '$9.99',
+      platform: ['Verified badge next to your name', 'Shows visitors that your profile is trusted'],
+      discord: ['Verified role on Discord'],
     },
     {
-      name: 'Ultra',
-      emoji: '<:ultra_clwn:1558580511952085113>',
-      price: '9.99€',
+      name: 'Media Host',
+      emoji: '<:member_clwn:1558562596288729129>',
+      price: '$4.99',
       platform: [
-        'Everything in Pro',
-        'All available domains',
-        'Unique animated badge',
-        'Priority on rare usernames',
-        'Featured profile on the site',
-        'Beta access to new features',
+        'Upload images and files and share them from your own link',
+        'Up to 25 MB per file',
+        '5 GB of storage',
+        'Media Host badge',
       ],
-      discord: ['Acces to our assests'],
+      discord: ['Media Host role on Discord'],
+    },
+    {
+      name: 'Extra Alias',
+      emoji: '<:alias_clwn:1558580636107677696>',
+      price: '$0.99',
+      platform: ['A second username that opens the same profile'],
+      discord: [],
     },
   ],
 
@@ -81,7 +82,7 @@ module.exports = {
         key: 'purchases',
         emoji: '<:purchase_clwn:1558564715091722241>',
         name: 'Purchases',
-        description: 'Payments, refunds, gifts or giveaways',
+        description: 'Problems with a payment, gifts or giveaways',
         fields: [
           { id: 'username', label: 'Your username on the site', style: 'short', placeholder: 'e.g. john' },
           { id: 'order', label: 'Order ID or receipt email', style: 'short', placeholder: 'From your receipt' },
@@ -92,7 +93,7 @@ module.exports = {
         key: 'support',
         emoji: '<:support_clwn:1558568751656607904>',
         name: 'Support',
-        description: 'Help with your profile, settings or staff aplications',
+        description: 'Help with your profile and account or staff aplications',
         fields: [
           { id: 'username', label: 'Your username on the site', style: 'short', required: false },
           { id: 'issue', label: 'How can we help?', style: 'paragraph' },
@@ -102,7 +103,7 @@ module.exports = {
         key: 'bug',
         emoji: '<:bug_clwn:1558568167209566298>',
         name: 'Bug report',
-        description: 'Something is broken on the site',
+        description: 'Something does not work on the website or discord server',
         fields: [
           { id: 'issue', label: 'What happened?', style: 'paragraph' },
           { id: 'steps', label: 'How can we reproduce it?', style: 'paragraph', required: false },
