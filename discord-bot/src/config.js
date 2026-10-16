@@ -1,11 +1,24 @@
 // ===== Edit this file to change what /setup-info posts =====
+
+// Accepts only full http(s) links. Anything else is ignored (with a warning) instead of crashing the message.
+function cleanUrl(name) {
+  const raw = (process.env[name] || '').trim().replace(/^["']|["']$/g, '');
+  if (!raw) return '';
+  try {
+    const u = new URL(raw);
+    if (u.protocol === 'https:' || u.protocol === 'http:') return raw;
+  } catch {}
+  console.warn(`[config] ${name} is not a valid link (it must start with https://), ignoring it`);
+  return '';
+}
+
 module.exports = {
-  brandName: process.env.BRAND_NAME || 'Information', // shown in the title: "YourName Pricing"
-  siteUrl: process.env.SITE_URL || 'clwn.wtf',
+  brandName: process.env.BRAND_NAME || 'Information', // shown in the title: "clwn.wtf Pricing"
+  siteUrl: cleanUrl('SITE_URL') || 'https://clwn.wtf',
 
   // Optional wide banner image shown at the top (a direct image link, ~1200x400 works well).
   // Leave empty to post without a banner.
-  bannerUrl: process.env.BANNER_URL || '',
+  bannerUrl: cleanUrl('BANNER_URL') || '',
 
   // Optional: ID of your support channel, adds "Questions? Ask in #channel" to the footer.
   supportChannelId: process.env.SUPPORT_CHANNEL_ID || '1554818454534619136',
