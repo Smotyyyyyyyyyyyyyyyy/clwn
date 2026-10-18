@@ -40,7 +40,7 @@ module.exports = {
       price: '$4.99',
       platform: [
         'Everything in Free',
-        'Animated backgrounds, premium fonts and cursor effects',
+        'Premium fonts and cursor effects',
         'Your own domain on your profile',
         'Referral link to invite friends',
         'Detailed profile analytics',
@@ -51,9 +51,9 @@ module.exports = {
     {
       name: 'Verified Badge',
       emoji: '<:verified_clwn:1558578058296955051>',
-      price: '$9.99',
-      platform: ['Verified badge next to your name', 'Shows visitors that your profile is trusted'],
-      discord: ['Verified role on Discord'],
+      price: '$7.99',
+      platform: ['Verified badge next to your name', 'Shows visitors that your profile is trusted', 'Increased credibility'],
+      discord: ['Verified badge role'],
     },
     {
       name: 'Media Host',
@@ -65,7 +65,7 @@ module.exports = {
         '5 GB of storage',
         'Media Host badge',
       ],
-      discord: ['Media Host role on Discord'],
+      discord: [''],
     },
     {
       name: 'Extra Alias',
