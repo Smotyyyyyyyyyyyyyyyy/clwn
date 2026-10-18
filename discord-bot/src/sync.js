@@ -13,6 +13,7 @@ const CHANNELS = {
   rules: process.env.RULES_CHANNEL_ID || '1554810624956170252',
   info: process.env.INFO_CHANNEL_ID || '1554818925408157707',
   tickets: process.env.TICKET_PANEL_CHANNEL_ID || '1554818454534619136',
+  verify: process.env.VERIFY_CHANNEL_ID || '1561434000827092992',
 };
 
 // Which message goes in which channel. The cards are built from the code, so when you edit the
@@ -21,6 +22,7 @@ const MESSAGES = [
   { key: 'rules', channelId: CHANNELS.rules, build: () => require('./commands/rules').buildRules() },
   { key: 'info', channelId: CHANNELS.info, build: () => require('./commands/setup').buildPricingContainer() },
   { key: 'tickets', channelId: CHANNELS.tickets, build: () => require('./tickets').buildPanel() },
+  { key: 'verify', channelId: CHANNELS.verify, build: () => require('./verify').buildPanel() },
 ];
 
 function load() {
