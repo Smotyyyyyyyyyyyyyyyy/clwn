@@ -65,7 +65,6 @@ module.exports = {
         '5 GB of storage',
         'Media Host badge',
       ],
-      discord: [''],
     },
     {
       name: 'Extra Alias',
