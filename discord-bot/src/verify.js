@@ -16,7 +16,7 @@ const { makeCaptcha } = require('./captcha');
 const config = require('./config');
 
 // ===== Settings =====
-const MEMBER_ROLE_ID = process.env.MEMBER_ROLE_ID || ''; // role given after verifying (paste the ID here or set the Railway variable)
+const MEMBER_ROLE_ID = process.env.MEMBER_ROLE_ID || '1554812191792832612'; // role given after verifying (paste the ID here or set the Railway variable)
 const UNVERIFIED_ROLE_ID = process.env.UNVERIFIED_ROLE_ID || ''; // optional: role removed after verifying
 const CODE_TTL_MS = 3 * 60 * 1000; // a captcha is valid for 3 minutes
 const MAX_WRONG = 3; // wrong answers allowed...
