@@ -18,7 +18,7 @@ const ROLES = [
   {
     key: 'announcements',
     label: 'Announcements',
-    emoji: '📢',
+    emoji: '<:announcement_clwn:1558565091580837988>',
     description: 'Important news about the server and the platform',
     vars: ['ANNOUNCEMENT_PING_ROLE_ID', 'ANNOUNCEMENTS_PING_ROLE_ID'],
     id: '',
@@ -26,7 +26,7 @@ const ROLES = [
   {
     key: 'giveaways',
     label: 'Giveaways',
-    emoji: '🎁',
+    emoji: '<:giveaway_clwn:1558565526437892116>',
     description: 'Get pinged when a giveaway starts',
     vars: ['GIVEAWAY_ROLE_ID', 'GIVEAWAY_PING_ROLE_ID'],
     id: '',
@@ -34,7 +34,7 @@ const ROLES = [
   {
     key: 'updates',
     label: 'Updates',
-    emoji: '🔔',
+    emoji: '<:announcement_clwn:1561439944881348749>',
     description: 'New features and changes on the site',
     vars: ['UPDATES_PING_ROLE_ID', 'UPDATE_PING_ROLE_ID'],
     id: '',
