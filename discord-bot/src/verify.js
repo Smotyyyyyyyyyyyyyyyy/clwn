@@ -16,9 +16,9 @@ const { makeCaptcha } = require('./captcha');
 const config = require('./config');
 
 // ===== Settings =====
-const MEMBER_ROLE_ID = process.env.MEMBER_ROLE_ID || ''; // role given after verifying (paste the ID here or set the Railway variable)
+const MEMBER_ROLE_ID = process.env.MEMBER_ROLE_ID || '1554812191792832612'; // role given after verifying (paste the ID here or set the Railway variable)
 const UNVERIFIED_ROLE_ID = process.env.UNVERIFIED_ROLE_ID || ''; // optional: role removed after verifying
-const ICON = '✅'; // normal emoji or custom <:name:123456789012345678>
+const ICON = ''; // normal emoji or custom <:name:123456789012345678>
 const CODE_TTL_MS = 3 * 60 * 1000; // a captcha is valid for 3 minutes
 const MAX_WRONG = 3; // wrong answers allowed...
 const LOCK_MS = 10 * 60 * 1000; // ...before the user must wait this long
@@ -48,7 +48,7 @@ function buildPanel() {
     text(`## ${config.brandName} Verification\nPress the button below and solve a short captcha to get access to the server.`)
   );
   c.addSeparatorComponents(divider());
-  c.addTextDisplayComponents(text('-# This keeps bots and raiders out. Having trouble? Open a ticket and the staff will help you.'));
+  c.addTextDisplayComponents(text('-# This keeps bots and raiders out.'));
   c.addActionRowComponents(
     new ActionRowBuilder().addComponents(
       new ButtonBuilder().setCustomId('verify_start').setLabel('Verify').setEmoji(ICON).setStyle(ButtonStyle.Primary)
