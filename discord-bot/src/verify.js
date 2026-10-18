@@ -47,7 +47,7 @@ function buildPanel() {
     text(`## ${config.brandName} Verification\nPress the button below and solve a short captcha to get access to the server.`)
   );
   c.addSeparatorComponents(divider());
-  c.addTextDisplayComponents(text('-# This keeps bots and raiders out. Having trouble? Open a ticket and the staff will help you.'));
+  c.addTextDisplayComponents(text('-# This keeps bots and raiders out.'));
   c.addActionRowComponents(
     new ActionRowBuilder().addComponents(
       new ButtonBuilder().setCustomId('verify_start').setLabel('Verify').setStyle(ButtonStyle.Secondary)
