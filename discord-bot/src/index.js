@@ -5,6 +5,7 @@ const { handleAutomod } = require('./automod');
 const { handleGiveawayButton, restoreGiveaways } = require('./giveaways');
 const { startApi } = require('./api');
 const tickets = require('./tickets');
+const verify = require('./verify');
 const { registerCommands } = require('./deploy-commands');
 const { syncMessages } = require('./sync');
 
@@ -42,10 +43,14 @@ client.on(Events.InteractionCreate, async (interaction) => {
       const cmd = client.commands.get(interaction.commandName);
       if (cmd) await cmd.execute(interaction);
     } else if (interaction.isButton()) {
-      if (interaction.customId === 'giveaway_enter') await handleGiveawayButton(interaction);
-      else if (interaction.customId.startsWith('ticket_')) await tickets.handleButton(interaction);
-    } else if (interaction.isModalSubmit() && interaction.customId.startsWith('ticket_modal:')) {
-      await tickets.handleModal(interaction);
+      const id = interaction.customId;
+      if (id.startsWith('giveaway_')) await handleGiveawayButton(interaction);
+      else if (id.startsWith('ticket_')) await tickets.handleButton(interaction);
+      else if (id.startsWith('verify_')) await verify.handleButton(interaction);
+    } else if (interaction.isModalSubmit()) {
+      const id = interaction.customId;
+      if (id.startsWith('ticket_modal:')) await tickets.handleModal(interaction);
+      else if (id === 'verify_modal') await verify.handleModal(interaction);
     }
   } catch (err) {
     console.error(err);
