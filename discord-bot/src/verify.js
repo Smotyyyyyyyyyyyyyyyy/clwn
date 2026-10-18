@@ -16,9 +16,8 @@ const { makeCaptcha } = require('./captcha');
 const config = require('./config');
 
 // ===== Settings =====
-const MEMBER_ROLE_ID = process.env.MEMBER_ROLE_ID || '1554812191792832612'; // role given after verifying (paste the ID here or set the Railway variable)
+const MEMBER_ROLE_ID = process.env.MEMBER_ROLE_ID || ''; // role given after verifying (paste the ID here or set the Railway variable)
 const UNVERIFIED_ROLE_ID = process.env.UNVERIFIED_ROLE_ID || ''; // optional: role removed after verifying
-const ICON = ''; // normal emoji or custom <:name:123456789012345678>
 const CODE_TTL_MS = 3 * 60 * 1000; // a captcha is valid for 3 minutes
 const MAX_WRONG = 3; // wrong answers allowed...
 const LOCK_MS = 10 * 60 * 1000; // ...before the user must wait this long
@@ -48,10 +47,10 @@ function buildPanel() {
     text(`## ${config.brandName} Verification\nPress the button below and solve a short captcha to get access to the server.`)
   );
   c.addSeparatorComponents(divider());
-  c.addTextDisplayComponents(text('-# This keeps bots and raiders out.'));
+  c.addTextDisplayComponents(text('-# This keeps bots and raiders out. Having trouble? Open a ticket and the staff will help you.'));
   c.addActionRowComponents(
     new ActionRowBuilder().addComponents(
-      new ButtonBuilder().setCustomId('verify_start').setLabel('Verify').setEmoji(ICON).setStyle(ButtonStyle.Secondary)
+      new ButtonBuilder().setCustomId('verify_start').setLabel('Verify').setStyle(ButtonStyle.Secondary)
     )
   );
   return c;
@@ -95,7 +94,7 @@ async function sendCaptcha(interaction, isRefresh) {
     return interaction.reply({ content: 'Verification is not set up yet. Please tell the staff.', flags: EPHEMERAL });
   }
   if (interaction.member && interaction.member.roles.cache.has(MEMBER_ROLE_ID)) {
-    return interaction.reply({ content: `${ICON} You are already verified.`, flags: EPHEMERAL });
+    return interaction.reply({ content: 'You are already verified.', flags: EPHEMERAL });
   }
   if ((locked.get(uid) || 0) > now) {
     return interaction.reply({ content: `Too many tries. You can try again ${ts(locked.get(uid))}.`, flags: EPHEMERAL });
@@ -164,7 +163,7 @@ async function handleModal(interaction) {
       console.error('Verification: could not give the role:', err.message);
       return respond(interaction, 'I could not give you the role. Please tell the staff (my role must be above the Member role and I need Manage Roles).');
     }
-    return respond(interaction, `${ICON} You are verified. Welcome!`);
+    return respond(interaction, 'You are verified. Welcome!');
   }
 
   const count = (wrong.get(uid) || 0) + 1;
