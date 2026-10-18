@@ -51,7 +51,7 @@ function buildPanel() {
   c.addTextDisplayComponents(text('-# This keeps bots and raiders out.'));
   c.addActionRowComponents(
     new ActionRowBuilder().addComponents(
-      new ButtonBuilder().setCustomId('verify_start').setLabel('Verify').setEmoji(ICON).setStyle(ButtonStyle.Primary)
+      new ButtonBuilder().setCustomId('verify_start').setLabel('Verify').setEmoji(ICON).setStyle(ButtonStyle.Secondary)
     )
   );
   return c;
@@ -77,7 +77,7 @@ function captchaPayload() {
       files: [new AttachmentBuilder(png, { name: 'captcha.png' })],
       components: [
         new ActionRowBuilder().addComponents(
-          new ButtonBuilder().setCustomId('verify_enter').setLabel('Enter code').setStyle(ButtonStyle.Primary),
+          new ButtonBuilder().setCustomId('verify_enter').setLabel('Enter code').setStyle(ButtonStyle.Secondary),
           new ButtonBuilder().setCustomId('verify_new').setLabel('New image').setStyle(ButtonStyle.Secondary)
         ),
       ],
