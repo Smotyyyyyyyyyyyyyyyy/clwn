@@ -7,6 +7,7 @@ const { startApi } = require('./api');
 const tickets = require('./tickets');
 const verify = require('./verify');
 const pingroles = require('./pingroles');
+const announce = require('./commands/announce');
 const { registerCommands } = require('./deploy-commands');
 const { syncMessages } = require('./sync');
 
@@ -30,6 +31,7 @@ client.once(Events.ClientReady, (c) => {
   console.log(`Logged in as ${c.user.tag}`);
   registerCommands().catch((err) => console.error('Command registration failed:', err.message));
   syncMessages(client).catch(console.error);
+  tickets.startMaintenance(client);
   restoreGiveaways(client);
   startApi(client);
 });
@@ -53,6 +55,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
       const id = interaction.customId;
       if (id.startsWith('ticket_modal:')) await tickets.handleModal(interaction);
       else if (id === 'verify_modal') await verify.handleModal(interaction);
+      else if (id.startsWith('announce_modal:') || id.startsWith('update_modal:')) await announce.handleModal(interaction);
     }
   } catch (err) {
     console.error(err);
