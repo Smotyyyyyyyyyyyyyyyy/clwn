@@ -19,14 +19,16 @@ const config = require('./config');
 const { isStaff, threadName } = require('./tickets');
 
 // ===== Settings =====
-const OPEN = true; // set to false to close the applications (the button turns off)
+// When the applications are closed, the button is turned off and shows this emoji and "Staff applications are closed".
+// Put your emoji here (normal like '🔒' or custom like '<:closed:123456789012345678>'). Leave '' for no emoji.
+const CLOSED_EMOJI = '';
 const COOLDOWN_DAYS = 7; // days someone has to wait after a denied application
 // Role pinged for every new application (default: the ticket staff role)
-const REVIEWER_ROLE_ID = process.env.APPLICATION_REVIEWER_ROLE_ID || config.tickets.staffRoleId || '';
+const REVIEWER_ROLE_ID = process.env.APPLICATION_REVIEWER_ROLE_ID || config.tickets.staffRoleId || '1554811408758083615, 1554811587649347604';
 // Optional: role given automatically when an application is accepted (for example "Trial staff")
 const ACCEPT_ROLE_ID = process.env.APPLICATION_ACCEPT_ROLE_ID || '';
 // Where decisions are logged (default: the ticket log channel)
-const LOG_CHANNEL_ID = process.env.APPLICATION_LOG_CHANNEL_ID || config.tickets.logChannelId || '';
+const LOG_CHANNEL_ID = process.env.APPLICATION_LOG_CHANNEL_ID || config.tickets.logChannelId || '1561831580492632094';
 
 // Shown on the panel
 const REQUIREMENTS = [
@@ -67,6 +69,14 @@ function save(data) {
   fs.writeFileSync(FILE, JSON.stringify(data, null, 2));
 }
 
+// Open / closed switch, changed with /applications open and /applications close
+const isOpen = () => load().open !== false;
+function setOpen(value) {
+  const data = load();
+  data.open = value;
+  save(data);
+}
+
 function nextNumber() {
   const data = load();
   data.counter += 1;
@@ -100,10 +110,11 @@ const reply = (interaction, content) => interaction.reply({ content, flags: EPHE
 
 // ---------- the panel (posted automatically in the applications channel) ----------
 function buildPanel() {
+  const open = isOpen();
   const c = new ContainerBuilder();
-  const intro = OPEN
+  const intro = open
     ? 'Want to help run the community? Fill in the form and the team will review your application.'
-    : 'Staff applications are closed right now. Check back later.';
+    : 'Staff applications are closed.';
   c.addTextDisplayComponents(text(`## ${config.brandName} Staff applications\n${intro}`));
   c.addSeparatorComponents(divider());
   c.addTextDisplayComponents(text(`**What we look for**\n${small(REQUIREMENTS)}`));
@@ -111,11 +122,15 @@ function buildPanel() {
   c.addTextDisplayComponents(
     text(small([`Only you and the staff can see your application. If it is denied you can apply again after ${COOLDOWN_DAYS} days.`]))
   );
-  c.addActionRowComponents(
-    new ActionRowBuilder().addComponents(
-      new ButtonBuilder().setCustomId('apply_start').setLabel('Apply').setStyle(ButtonStyle.Secondary).setDisabled(!OPEN)
-    )
-  );
+
+  const button = new ButtonBuilder().setCustomId('apply_start').setStyle(ButtonStyle.Secondary);
+  if (open) {
+    button.setLabel('Apply');
+  } else {
+    button.setLabel('Staff applications are closed').setDisabled(true);
+    if (CLOSED_EMOJI) button.setEmoji(CLOSED_EMOJI);
+  }
+  c.addActionRowComponents(new ActionRowBuilder().addComponents(button));
   return c;
 }
 
@@ -162,7 +177,7 @@ async function findPending(client, userId) {
 }
 
 async function checkCanApply(interaction) {
-  if (!OPEN) return 'Staff applications are closed right now.';
+  if (!isOpen()) return 'Staff applications are closed.';
   const until = load().cooldowns[interaction.user.id] || 0;
   if (until > Date.now()) return `You can apply again <t:${Math.ceil(until / 1000)}:R>.`;
   const pending = await findPending(interaction.client, interaction.user.id);
@@ -350,4 +365,4 @@ async function handleModal(interaction) {
   if (id.startsWith('apply_decision:')) return decide(interaction, id.split(':')[1]);
 }
 
-module.exports = { buildPanel, buildApplicationContainer, handleButton, handleModal };
+module.exports = { buildPanel, buildApplicationContainer, handleButton, handleModal, isOpen, setOpen };
