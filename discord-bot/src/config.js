@@ -92,9 +92,10 @@ module.exports = {
     categories: [
       {
         key: 'purchases',
+        slug: 'purchase',
         emoji: '<:purchase_clwn:1558564715091722241>',
         name: 'Purchases',
-        description: 'Problems with a payment, gifts or giveaways',
+        description: 'Problems with a payment, gifts or giveaways.',
         fields: [
           { id: 'username', label: 'Your username on the site', style: 'short', placeholder: 'e.g. john' },
           { id: 'order', label: 'Order ID or receipt email', style: 'short', placeholder: 'From your receipt' },
@@ -105,7 +106,7 @@ module.exports = {
         key: 'support',
         emoji: '<:support_clwn:1558568751656607904>',
         name: 'Support',
-        description: 'Help with your profile and account or staff applications',
+        description: 'Help with your profile and account.',
         fields: [
           { id: 'username', label: 'Your username on the site', style: 'short', required: false },
           { id: 'issue', label: 'How can we help?', style: 'paragraph' },
@@ -115,7 +116,7 @@ module.exports = {
         key: 'bug',
         emoji: '<:bug_clwn:1558568167209566298>',
         name: 'Bug report',
-        description: 'Something does not work on the website or discord server',
+        description: 'Something does not work on the website or discord server.',
         fields: [
           { id: 'issue', label: 'What happened?', style: 'paragraph' },
           { id: 'steps', label: 'How can we reproduce it?', style: 'paragraph', required: false },
