@@ -7,6 +7,7 @@ const { startApi } = require('./api');
 const tickets = require('./tickets');
 const verify = require('./verify');
 const pingroles = require('./pingroles');
+const applications = require('./applications');
 const announce = require('./commands/announce');
 const { registerCommands } = require('./deploy-commands');
 const { syncMessages } = require('./sync');
@@ -51,10 +52,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
       else if (id.startsWith('ticket_')) await tickets.handleButton(interaction);
       else if (id.startsWith('verify_')) await verify.handleButton(interaction);
       else if (id.startsWith('pingrole:')) await pingroles.handleButton(interaction);
+      else if (id.startsWith('apply_')) await applications.handleButton(interaction);
     } else if (interaction.isModalSubmit()) {
       const id = interaction.customId;
       if (id.startsWith('ticket_modal:')) await tickets.handleModal(interaction);
       else if (id === 'verify_modal') await verify.handleModal(interaction);
+      else if (id === 'apply_modal' || id.startsWith('apply_decision:')) await applications.handleModal(interaction);
       else if (id.startsWith('announce_modal:') || id.startsWith('update_modal:')) await announce.handleModal(interaction);
     }
   } catch (err) {
