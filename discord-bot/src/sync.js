@@ -15,6 +15,7 @@ const CHANNELS = {
   tickets: process.env.TICKET_PANEL_CHANNEL_ID || '1554818454534619136',
   verify: process.env.VERIFY_CHANNEL_ID || '1561434000827092992',
   pings: process.env.PING_ROLES_CHANNEL_ID || '1561436922990297228',
+  apply: process.env.APPLY_CHANNEL_ID || '1561823595674607789',
 };
 
 // Which message goes in which channel. The cards are built from the code, so when you edit the
@@ -25,6 +26,7 @@ const MESSAGES = [
   { key: 'tickets', channelId: CHANNELS.tickets, build: () => require('./tickets').buildPanel() },
   { key: 'verify', channelId: CHANNELS.verify, build: () => require('./verify').buildPanel() },
   { key: 'pings', channelId: CHANNELS.pings, build: () => require('./pingroles').buildPanel() },
+  { key: 'apply', channelId: CHANNELS.apply, build: () => require('./applications').buildPanel() },
 ];
 
 function load() {
