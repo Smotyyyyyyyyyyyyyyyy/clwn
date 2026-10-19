@@ -141,7 +141,7 @@ function buildTicketContainer(t) {
         .setCustomId('ticket_close')
         .setLabel('Close ticket')
         .setEmoji('<:rejected_clwn:1558577590569017454>')
-        .setStyle(ButtonStyle.Danger)
+        .setStyle(ButtonStyle.Secondary)
         .setDisabled(closed)
     )
   );
