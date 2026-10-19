@@ -73,6 +73,11 @@ const small = (lines) => lines.map((l) => `-# ${l}`).join('\n');
 const pad = (n) => String(n).padStart(4, '0');
 const fmt = (n) => `#${pad(n)}`;
 const categoryOf = (key) => config.tickets.categories.find((c) => c.key === key);
+// Name of the private thread, for example "support-smoty" or "purchase-indigo"
+function threadName(slug, user) {
+  const name = String(user.username || '').toLowerCase().replace(/[^a-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'user';
+  return `${slug}-${name}`;
+}
 
 function isStaff(member) {
   if (!member) return false;
@@ -202,7 +207,7 @@ async function handleModal(interaction) {
 
     // Private thread, only people added to it can see it
     const thread = await interaction.channel.threads.create({
-      name: `${cat.key}-${pad(number)}`,
+      name: threadName(cat.slug || cat.key, interaction.user),
       type: ChannelType.PrivateThread,
       autoArchiveDuration: ThreadAutoArchiveDuration.OneWeek,
       invitable: false,
@@ -446,6 +451,7 @@ module.exports = {
   handleModal,
   getTicket,
   isStaff,
+  threadName,
   startMaintenance,
   checkInactivity, // exported for testing
 };
