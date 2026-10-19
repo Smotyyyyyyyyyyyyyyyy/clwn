@@ -21,7 +21,7 @@ const { isStaff, threadName } = require('./tickets');
 // ===== Settings =====
 // When the applications are closed, the button is turned off and shows this emoji and "Staff applications are closed".
 // Put your emoji here (normal like '🔒' or custom like '<:closed:123456789012345678>'). Leave '' for no emoji.
-const CLOSED_EMOJI = '';
+const CLOSED_EMOJI = '<:rejected_clwn:1558577590569017454>';
 const COOLDOWN_DAYS = 7; // days someone has to wait after a denied application
 // Role pinged for every new application (default: the ticket staff role)
 const REVIEWER_ROLE_ID = process.env.APPLICATION_REVIEWER_ROLE_ID || config.tickets.staffRoleId || '1554811408758083615, 1554811587649347604';
