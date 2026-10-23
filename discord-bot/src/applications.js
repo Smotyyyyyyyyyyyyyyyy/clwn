@@ -254,7 +254,7 @@ async function submitApplication(interaction) {
   } catch (err) {
     console.error('Application failed:', err);
     return interaction.editReply(
-      "I couldn't create your application. An admin needs to give my role the permissions: Create Private Threads, Send Messages in Threads and Manage Threads."
+      "I couldn't create your application.\n-# Error: ${String(err.message).slice(0, 300)}"
     );
   }
 }
