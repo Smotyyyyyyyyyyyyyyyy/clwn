@@ -75,6 +75,7 @@ const fmt = (n) => `#${pad(n)}`;
 const categoryOf = (key) => config.tickets.categories.find((c) => c.key === key);
 // Name of the private thread, for example "support-smoty" or "purchase-indigo"
 function threadName(slug, user) {
+        name: threadName(cat.slug || cat.key, interaction.user),
   const name = String(user.username || '').toLowerCase().replace(/[^a-z0-9._-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'user';
   return `${slug}-${name}`;
 }
